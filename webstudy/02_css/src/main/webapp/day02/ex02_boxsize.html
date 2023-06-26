@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*그림 크기가 400px이다. 그림 크기에 맞추자*/
+        /*width + left padding + right padding + left border + right border + left margin + right margin*/
+        img {
+            width: 430px;
+        }
+
+        #mybox1 {
+
+            width: 400px;
+            padding: 30px;
+            border: 5px solid gray;
+            margin: 0 px;
+            margin-bottom: 5px;
+        }
+
+        #mybox2 {
+
+            width: 470px;
+            padding: 30px;
+            border: 5px solid gray;
+            margin: 0 px;
+            /*테두리까지 포함해서 너비값을 지정한다*/
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../images/boxmodel.png" alt="">
+    <div id="mybox1"> 박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+        박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+        박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+        박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+    </div>
+    <div id="mybox2"> 박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+        박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+        박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+        박스 사이즈 구하기와 박스 사이즈 고정하기 박스 사이즈 구하기와 박스 사이즈 고정하기
+    </div>
+</body>
+
+</html>

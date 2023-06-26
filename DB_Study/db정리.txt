@@ -1,0 +1,373 @@
+DBMS 설치
+데이터베이스 생성
+데이터베이스 오브젝트 생성
+====================
+데이터베이스(DB) 정의 : 특정 조직의 여러 사용자가 **공유하여 사용할 수 있도록 **통합해서 
+                                 **저장한 **운영 데이터의 집합
+데이터베이스의 특징 :  실시간 접근성, 지속적인 변환, 내용기반의 참조, 동시공유
+
+데이터베이스관리시스템(DBMS) : 조직에 필요한 데이터를 데이터베이스에 통합하여 저장하고 관리하는 시스템
+데이터베이스 주요기능 
+  -- 정의기능 : 데이터베이스 구조를 정의하거나 수정 할 수 있다. 
+  -- 조작기능 : 데이터를 삽입, 삭제 ,수정, 검색하는 연산을 할 수 있다.
+  -- 제어기능 : 데이터를 항상 정확하고 안전하게 유지할 수 있다.
+ 
+  관련 언어(SQL :  구조적 처리 언어 : 관계형 데이터베이스에서 정보를 저장하고, 처리하기 위한 프로그래밍 언어.)
+ -- 데이터 정의어(DDL) : 데이터베이스 구조를 정의하거나 수정, 삭제하는 위해 사용하는 언어
+                                  create(구조 정의= 생성), alter(수정), drop (삭제)
+ -- 데이터 조작어(DML) : 데이터의 삽입,삭제,수정,검색 등의 처리를 요구하기 위해 사용하는 언어
+                                  삽입(insert), 삭제(delete), 수정(update), 검색(select) 
+ -- 데이터 제어어(DCL) : 내부적으로 필요한 규칙이나 기법을 정의하기 위해서 사용하는 언어
+                                 commit, rollback, grant(권한부여), revoke(부여된 권한 회수)
+
+관계형 데이터베이스관리시스템 (RDBMS) : 데이터베이스가 테이블 형태로 구성되어있다.
+   예)  Oracle, My-SQL, MariaDB, MS-SQL
+
+데이터베이스의 구조
+ 1. 외부스키마 : 개별 사용자 관점에서 이해하고 표현하는 단계
+                      사용자 마다 다를 수 있어서 여러개 존재할 수 있다.
+                      (사용자에게 필요한 데이터베이스 정의)
+                      서브 스키마라고도함
+ 2. 개념스키마 :  조직전체의 관점에서 이해하고 표현하는 단계
+                      하나의 데이터베이스에서는 개념 스키마가 하나만 존재
+                     ** 외부 스키마를 모아 놓은 스키마(중복 제거)
+ 3. 내부스키마 : 저장 장치의 관점에서 이해하고 표현하는 단계
+                     개념스키마의 물리적 저장구조를 정의해 놓은 것 
+
+데이터베이스 사용자 :
+  -- 데이터베이스 관리자 (DBA) : 데이터베이스 시스템을 운영 및 관리하는 사람
+  -- 응용 프로그래머 :  데이터 언어를 삽입하여 응용 프로그램을 작성하는 사람
+  -- 최종 사용자 (유저 = user) 
+===========================================================
+관계 데이터 모델 : 관계형 데이터베이스 = 테이블 형태 = 표 형태
+ - 릴레이션 = 테이블 
+ - 행 = row = 튜플 = 레코드
+ - 열 = attribute = 속성  = 필드
+ - 도메인 = 속성들이 가질 수 있는 값들의 집합 , 데이터타입(Data Type)과 길이를 의미한다.
+
+ - 릴레이션 스키마(필드명) : 모든 속성의 이름으로 정의, 
+ - 릴레이션 인스턴스 :  튜플들의 집합
+
+키(key) : 튜플들을 유일하게 구별하는 속성 또는 속성들의 집합
+ - 기본키(primary key = PK) : 유일성(UNIQUE)과 최소성(NOTNULL)를 만족하는 속성  (주민번호, 은행 계좌번호...)
+                                        테이블의 각 행을 고유하게 식별할 수 있는 속성 (열)  
+ - 외래키(foreign key = FK) : 두 테이블의 데이터 간 연결을 설정하고 강제 적용하여 외래 키 테이블에 
+                                       저장 될 수 있는 데이터를 제어하는데 사용되는 속성(열)
+                                      어느 테이블에서는 기본키이지만  
+                                      다른 테이블에서는 하나의 컬럼으로만 존재하는 컬럼을 말한다.
+
+무결성 제약조건 : 데이터의 무결성(정확성)을 보장하고 일관된 상태로 유지하기 위한 규칙
+무결성 : 데이터에 결함이 없은 상태, 즉 데이터가 정확하고 유효하게 유진된 상태
+  - 개체 무결성 제약 조건 : 기본키를 가진 속성(열) 널값을 가질 수 없다. (NOTNULL)
+  - 참조 무결성 제약 조건 : 외래키는 참조할 수 없는 값을 가질 수 없다.
+
+=============================================================
+오라클 설치하기 
+
+- 설치 중간에 암호설정 ( system 암호 설정 : 1111) 
+- sqldevloper 다우로드 및 압축해제 
+
+
+===  오라클 자료형 ====
+1) 숫자 : number() : 
+            number(p,s) :  p: 전체 자리수, s : 소숫점 자리수
+            number(4)    => 정수 (전체 4자리 )
+            number(4,1)  => 실수 (전체 4자리, 소수점자리수)
+                                    1234.2 (X),   123.1(0)
+
+2) 문자 :  대/소문자,숫자 => 1byte, 영어제외한 나머지 => 3byte
+    char(n)       :  고정길이 / 최대 2000 byte
+    varchar2(n)  :  가변길이 / 최대 4000byte
+    long          :  가변길이 / 최대 2GB
+    clob           :  대용량 텍스트 데이터 타입 ( 최대 4Gbyte)
+
+3) 날짜  :  date('2023/05/24') ,  timestamp
+
+4) 그래픽, 이미지 ,동영상등 의 데이터  BLOB(이진형 대용량 객체)  를 주로 사용 한다.
+=====================================================
+일반 계정 만들기 
+CREATE USER  c##내계정 IDENTIFIED BY 비번 ;
+CREATE USER  c##nohssam IDENTIFIED BY 1111;
+-> 오라클 12c 부터는 공통계정 앞에 c##을 붙이도록 네이밍 규칙변경 
+
+--  내 계정에 접속 권한과 자원 사용 권한을 부여 하자 
+--  권한 부여 명령어 : GRANT  ( System 계정에서)
+-- GRANT CONNECT, RESOURCE TO 내계정 
+
+-- 테이블 스페이스 관한 부여
+alter user 내계정 default tablespace users quota unlimited on users;
+
+==========   내 계정에 접속 =======================
+-- 현재 구성된 테이블 보기 : select * from tab;
+-- 테이블 구조 (스키마보기) : desc 테이블이름 ;
+> SELECT * FROM TAB;
+> DESC 테이블이름;
+=============================================
+SQL
+-- 데이터 정의어(DDL) : CREATE(생성), DROP(삭제), ALTER(구조변경 = 수정) 
+
+-- 테이블 생성(CREATE) : 기본적으로 테이블에는 PRIMARY KEY(기본키)가 존재 해야 된다.
+
+ 방법1) PRIMARY KEY 하나일때 사용
+        CREATE TABLE 테이블이름(
+            컬럼명  DATATYPE(SIZE) NOT NULL PRIMARY KEY, 
+            컬럼명  DATATYPE(SIZE) ,
+            컬럼명  DATATYPE(SIZE) ,
+            컬럼명  DATATYPE(SIZE) 
+        );
+
+ 방법2) PRIMARY KEY 하나 또는 여러개 일때 모두 사용가능
+       CREATE TABLE 테이블이름(
+            컬럼명1  DATATYPE(SIZE) NOT NULL, 
+            컬럼명2  DATATYPE(SIZE) ,
+            컬럼명3  DATATYPE(SIZE) ,
+            컬럼명4  DATATYPE(SIZE) ,
+            PRIMARY KEY(컬럼명1)
+        );
+
+     CREATE TABLE 테이블이름(
+            컬럼명1  DATATYPE(SIZE) NOT NULL, 
+            컬럼명2  DATATYPE(SIZE) NOT NULL,
+            컬럼명3  DATATYPE(SIZE) NOT NULL ,
+            컬럼명4  DATATYPE(SIZE) ,
+            PRIMARY KEY(컬럼명1, 컬럼명3)
+        );
+
+ -- 테이블 삭제(DROP) : DROP TABLE 테이블이름;
+
+ -- 테이블 복사 (KEY는 복사가 안됨)
+   1) 구조와 내용(데이터)을 모두 복사하기 
+      CREATE TABLE  새테이블이름 AS SELECT * FROM 복사할 테이블이름 ;
+   2) 구조만 복사하기 
+      CREATE TABLE  새테이블이름 AS SELECT * FROM 복사할 테이블이름 WHERE 1 = 0 ;
+
+  -- 고객테이블 (고객아이디(pk),고객이름, 나이, 등급, 직업, 적립금)
+CREATE TABLE 고객테이블(
+  고객아이디 VARCHAR2(50),
+  고객이름 VARCHAR2(50),
+  나이 NUMBER,
+  등급 VARCHAR2(50),
+  직업 VARCHAR2(50),
+  적립금  NUMBER
+);
+-- book 테이블 만들기 
+--  도서번호(bookid, pk),  도서이름(bookname, 90), 출판사(publisher,50), 가격(price,7)
+ CREATE TABLE BOOK(
+     BOOKID VARCHAR2(50) NOT NULL PRIMARY KEY,
+     BOOKNMAE VARCHAR2(90),
+     PUBLISHER VARCHAR2(50),
+     PRICE  NUMBER(7)
+ );
+-- 제약조건
+  -- NOT NULL :  널을 허용하지 않음
+  -- DEFAULT : 기본값을 지정하는 키워드 
+     --  적립금 NUMBER DEFAULT 0  => 값을 입력할때 입력하지 않으면 0으로 채워진다.
+  -- CHECK : 테이블에 정확하고 유효한 데이터를 유지하기 위해 특정 속성에 대한 제약조건을 지정
+     -- AGE NUMBER CHECK >= 19  => 19 이상인 숫자만 받자 
+     -- 재고량 NUMBER CHECK(재고량 >=0 AND 재고량 <= 1000)  => 재고량이 0~1000 까지 
+
+테이블 구조 변경 : ALTER
+-- 컬럼 추가 (ADD)  : ALTER TABLE 테이블이름 ADD 컬럼명 자료형(크기) [제약조건]
+ -- MEMBER01 테이블에 주소를 넣자 (M_ADDR  VARCHAR2(100) DEFAULT '서울' ;
+    ALTER TABLE MEMBER01 ADD M_ADDR VARCHAR2(100) ;
+    COMMIT;
+    ALTER TABLE MEMBER01 ADD M_ADDR2 VARCHAR2(100) DEFAULT '서울' ;
+    COMMIT;
+    
+-- 컬럼 삭제 (DROP COLUMN 컬럼명) : ALTER TABLE 테이블이름 DROP COLUMN 컬럼명;
+   ALTER TABLE MEMBER01 DROP COLUMN M_ADDR ;
+   COMMIT;
+   -- 데이터가 있어도 삭제 된다.
+   -- 만약에 삭제할 속성의 참조하는 다른 속성이 있으면 삭제 안됨
+   ALTER TABLE MEMBER01 DROP COLUMN M_ADDR2 ;
+   COMMIT;
+
+-- 컬럼 변경 (MODIFY) : ALTER TABLE 테이블이름 MODIFY 컬럼명 자료형(크기) [제약조건]
+   -- 데이터가 없는 경우 : 컬럼의 자료형과 크기를 마음대로 변경할 수있다.
+    -- M_ADDR는 데이터가 없으므로 같은 자료형의 크기 마음대로 변경
+      ALTER TABLE MEMBER01 MODIFY M_ADDR VARCHAR2(150);
+    -- M_ADDR는 데이터가 없으므로 다른 자료형으로 변경 가능
+    ALTER TABLE MEMBER01 MODIFY M_ADDR NUMBER(7);
+ 
+   -- 데이터가 있는 경우 같은 자료형의 크기 변경은 가능 (단, 기존 있는 데이터의 크기보다는 커야 된다.)
+      ALTER TABLE MEMBER01 MODIFY M_ADDR2 VARCHAR2(50);
+      
+   -- 데이터가 있는데 다른 자료형으로 변경 할때 (비 추천)
+      --  문자를 숫자로 변경할 때  안된다.
+        ALTER TABLE MEMBER01 MODIFY M_ADDR2 NUMBER ;
+      -- 숫자를 문자로 변경할 때 안된다.
+        ALTER TABLE MEMBER01 MODIFY M_AGE VARCHAR2(6) ;
+      
+-- 조작어(DML) : 삽입(INSERT INTO), 삭제(DELETE  FROM), 수정(UPDATE ~ SET), 검색(SELECT ~ FROM)
+-- 제어어(DCL) : GRANT, REVOKE, COMMIT , ROLLBACK
+  -- COMMIT : 현재 상태를 DB에 적용(저장)
+  -- ROLLBACK : COMMIT 이전상태로 되돌린다.
+   --  COMMIT - 작업1  - 작업2 - 작업3 - COMMIT - 작업4 - 작업5-COMMIT  - ROLLBACK (작업4, 작업5 이전상태로 되돌린다.
+   
+-- 데이터 삽입 ( INSERT  INTO ~ VALUES ~ )  
+-- 방법1)  INSERT INTO 테이블이름 
+      -- VALUES(테이블에들어갈 값,테이블에들어갈 값,테이블에들어갈 값,);
+      -- 값은 순서대로 모두 채워야 한다.
+      -- 모두 채우지 않으면 오류 이다. 
+      -- 값을 넣기 실으면 NULL 을 넣으수 있다. 
+      -- (단, 속성 NOT NULL  이면 무조건 값이 들어가야 한다.)
+      -- 날짜와 문자는 반드시 '' (사용)
+      -- SYSDATE는 오늘날짜를 뜻하는 오라클 명령어이다.
+      INSERT INTO MEMBER01
+      VALUES(2, 'KIM', 'K111', '김둘리', 24, SYSDATE, 02,'서울');
+      
+      INSERT INTO MEMBER01
+      VALUES(3, 'PARK', 'P111', '박꺽정', NULL, NULL, 02,'서울');
+      
+      INSERT INTO MEMBER01
+      VALUES(4, 'LEE', 'L111', '이지매', NULL,'2023/01/22', 02,'서울');
+      COMMIT;
+      SELECT * FROM MEMBER01;
+      
+-- 방법2) INSERT INTO 테이블이름(컬럼명, 컬럼명,... )
+--        VALUES(들어갈 값,값,...)
+--       컬럼명과 들어갈 반드시 1:1 매칭
+--       속성이 NOT NULL  반드시 넣어야 된다.
+      INSERT INTO MEMBER01(IDX)
+      VALUES(5);
+      INSERT INTO MEMBER01(IDX, M_ID, M_NAME, M_PW)
+      VALUES(6, 'KANG', '강동원', 'K111');
+      
+ -- 고객 테이블 삽입하기 
+    INSERT INTO 고객테이블
+    VALUES('apple', '정소화', 20, 'gold', '학생',1000 );
+    INSERT INTO 고객테이블
+    VALUES('banana', '김선우', 25, 'vip', '간호사',2500 );
+    INSERT INTO 고객테이블
+    VALUES('carrot', '고명석', 28, 'gold', '교사',4500 );
+    INSERT INTO 고객테이블(고객아이디, 고객이름, 나이, 등급, 직업, 적립금)
+    VALUES('orange', '김용욱', 22, 'silver', '학생',0 );
+    INSERT INTO 고객테이블(고객아이디, 고객이름, 나이, 등급, 직업, 적립금)
+    VALUES('melon', '성원용', 35, 'gold', '회사원',5000 );
+    INSERT INTO 고객테이블(고객아이디, 고객이름, 나이, 등급, 직업, 적립금)
+    VALUES('pear', '채광주', 31, 'silver', '회사원',500 );
+    INSERT INTO 고객테이블(고객아이디, 고객이름,  등급, 직업, 적립금)
+    VALUES('peach', '오형준',  'silver', '의사',300 );
+    commit;
+    INSERT INTO 고객테이블(고객아이디, 고객이름,  등급, 직업, 적립금)
+    VALUES('peach1', '오형준1',  'silver1', '의사1',3001 );
+    rollback;
+    select * from 고객테이블;
+
+   === 교재 테이블 만들기 ===
+  create table 제품테이블(
+      제품번호 varchar2(50) not null primary key,
+      제품명  varchar2(50),
+      재고량 number,
+      단가 number,
+      제조업체 varchar2(50)
+    );  
+     create table 주문테이블(
+      주문번호 varchar2(50) not null,
+      주문고객  varchar2(50),
+      주문제품 varchar2(50),
+      수량 number,
+      배송지 varchar2(50),
+      주문일자 date,
+      primary key(주문번호)
+    );     
+    
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p01', '그냥만두',5000,4500,'대한식품');
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p02', '매운쫄면',2500,5500,'민국푸드');
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p03', '쿵떡파이',3600,2600,'한빛제과');
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p04', '맛난초콜릿',1250,2500,'한빛제과');
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p05', '얼큰라면',2200,1200,'대한식품');
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p06', '통통우동',1000,1550,'민국푸드');
+    insert into 제품테이블(제품번호,제품명,재고량,단가,제조업체 )
+    values('p07', '달콤비스킷',1650,1500,'한빛제과');
+    commit;
+    select * from  제품테이블;
+   
+   insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o01','apple', 'p03',10, '서울시 마포구', '2022-01-01');
+   insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o02','melon', 'p01',5, '인천시 계양구', '2022-01-10');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o03','banana', 'p06',45, '경기도 부천시', '2022-01-11');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o04','carrot', 'p02',8, '부산시 금정구', '2022-02-01');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o05','melon', 'p06',36, '경기도 용인시', '2022-02-20');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o06','banana', 'p01',19, '충청북도 보은군', '2022-03-02');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o07','apple', 'p03',22, '서울시 영등포구', '2022-03-15');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o08','pear', 'p02',50, '강원도 춘천시', '2022-04-10');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o09','banana', 'p04',15, '전라남도 목포시', '2022-04-11');
+    insert into 주문테이블(주문번호,주문고객,주문제품,수량,배송지,주문일자)
+    values('o10','carrot', 'p03',20, '경기도 안양시', '2022-05-22');
+    commit;
+    select * from 주문테이블;
+        --  수정, 삭제는 반드시 조건식을 넣어야 한다. 
+    -- 조건식을 넣지 않으면 전체가 삭제 되거나  전체가 수정 된다.
+    
+    -- 데이터 삭제 ( delete from 테이블이름 [where 조건식] )
+     -- 조건식이 있으면 조건식 이 참인 것만 삭제 된다.
+     -- 조건식이 없으면 전체가 삭제 된다.
+     -- 조건식( 컬럼명 비교연산자 또는 논리연산)
+     delete from 고객테이블 ;
+     select * from 고객테이블;
+     select * from 제품테이블;
+     -- 제조업체가 '한빛제과'인 행만 삭제 
+     delete from 제품테이블 where 제조업체 = '한빛제과';
+     -- 제조업체가 '민국푸드'이면서 단가 3000이하인 행만 삭제 
+     delete from 제품테이블 where 제조업체 = '민국푸드' and   단가 <=3000  ;
+    rollback;
+   
+   -- 데이터 수정 (update 테이블이름 set 변경내용  [where 조건식] )
+   -- 조건식이 있으면 조건식 이 참인 것만 수정 된다.
+   -- 조건식이 없으면 전체가 수정 된다.
+   
+   -- 제조업체를 대한푸드로 수정
+   update 제품테이블 set 제조업체 = '대한푸드' ;
+   -- 제조업체를 한빛제과로 수정 단, 단가가 2000이상인 행만 수정 
+   update 제품테이블 set 제조업체 = '한빛제과' where 단가 >= 2000;
+   -- 제조업체를 대한식품, 재고량=10000 으로  수정 단,제품번호가 p01 또는  p05 행만 수정 
+   update 제품테이블 set 제조업체 = '대한식품', 재고량 = 10000 where  제품번호 = 'p01' or 제품번호 = 'p05';
+   rollback;
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+                                   
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

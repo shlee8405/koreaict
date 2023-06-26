@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .intro {
+
+            width: 200px;
+            height: 70px;
+            background-color: aquamarine;
+            overflow: visible;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .intro1 {
+
+            width: 200px;
+            height: 70px;
+            background-color: aquamarine;
+            overflow: hidden;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .intro2 {
+
+            width: 200px;
+            height: 70px;
+            background-color: aquamarine;
+            overflow: scroll;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .intro3 {
+
+            width: 200px;
+            height: 70px;
+            background-color: aquamarine;
+            overflow: auto;
+            float: left;
+            margin-right: 10px;
+        }
+
+        span {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 
+        Over4flow : 너무 커서 영역에 맞지 않을 내용을 제어할 때 사용
+            - visible : 기본, 내용은 요소 상자 외부에서도 보인다.
+            - hidden: 넘치는 내용은 보이지 않는다
+            - scroll : 넘치면 스크롤이 추가 된다
+            - auto : 필요할때 스크롤바 추가한다
+            -overflow-x specifies what to do with the left/right edges of the content.
+            -overflow-y specifies what to do with the top/bottom edges of the content.
+     -->
+
+    <h2> CSS Overflow </h2>
+    <div class="intro">
+        <span>overflow : visible <br></span>
+        Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+        Phasellus imperdiet, nulla et dictum interdum,
+        nisi lorem egestas odio,
+        vitae scelerisque enim ligula venenatis dolor.
+    </div>
+    <div class="intro1">
+        <span>overflow : hidden <br></span>
+        Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+        Phasellus imperdiet, nulla et dictum interdum,
+        nisi lorem egestas odio,
+        vitae scelerisque enim ligula venenatis dolor.
+    </div>
+    <div class="intro2">
+        <span>overflow : scroll <br></span>
+        Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+        Phasellus imperdiet, nulla et dictum interdum,
+        nisi lorem egestas odio,
+        vitae scelerisque enim ligula venenatis dolor.
+    </div>
+    <div class="intro3">
+        <span>overflow : auto <br></span>
+        Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+        Phasellus imperdiet, nulla et dictum interdum,
+        nisi lorem egestas odio,
+        vitae scelerisque enim ligula venenatis dolor.
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    .container{
+		width: 960px;
+		margin: 0 auto;
+	}
+	/* 선 */
+	.navi{
+		width: 960px;
+		height: 60px;
+		padding-bottom:10px;
+		border-bottom: 2px solid #ccc; 
+	}
+	/* 메뉴 */
+	.navi ul{
+		list-style-type: none;
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+	.navi ul li{
+		display: inline-block;
+		width: 150px;
+		padding: 10px;
+	}
+	.navi a:link, .navi a:visited{
+		text-decoration:none;
+		font-size: 16px;
+		padding: 10px;
+		color: black;
+		font-weight: bold;
+	}
+	.navi a:hover, .navi a:focus{
+		background-color: #222;
+		color: white;
+	}
+	.navi a:active{
+		background: red;
+	}
+	
+</style>
+</head>
+<body>
+<div class="container">
+    <nav class="navi">
+      <ul>
+        <li><a href="ex12_pseudo.html#intro">이용 안내</a></li>
+        <li><a href="ex12_pseudo.html#room">객실 소개</a></li>
+        <li><a href="ex12_pseudo.html#reservation">예약 방법 및 요금</a></li>
+        <li><a href="ex13_pseudo.html">예약하기</a></li>
+      </ul>
+    </nav>
+
+    <form id="signup">
+      <fieldset>
+        <legend>개인 정보</legend>
+        <ul>
+          <li>
+            <label for="fullname">이름</label>
+            <input id="fullname" name="fullname" type="text" required>
+          </li>
+          <li>
+            <label for="tel">연락처</label>
+            <input id="tel" name="tel" type="tel">
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>객실 형태</legend>
+        <ul>
+          <li>
+            <input type="radio" name="room" id="basic">
+            <label for="basic">기본형(최대 2인)</label>
+          <li>
+          <li>
+            <input type="radio" name="room" id="family">
+            <label for="family">가족형(최대 8인)</label>
+          </li>
+        </ul>
+      </fieldset>
+      <button type="submit"> 제출 </button> 
+    </form>
+  </div>
+</body>
+</html>

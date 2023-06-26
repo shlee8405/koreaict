@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>table_span</title>
+<style type="text/css">
+table, th, td {
+border : 3px solid tomato; 
+border-collapse : collapse;
+text-align : center;
+margin: auto;
+}
+
+h2, p {
+text-align : center;
+}
+
+h2 {
+font-style : bold;
+}
+
+p {
+color : grey ;
+font-style : italic;
+}
+
+</style>
+</head>
+<body>
+
+<!--  
+	열합치기(좌우) : colspan ="합쳐질 컬럼 수"
+		오른쪽 컬럼들을 왼쪽에 있는 컬럼으로 합침
+	행합치기 : rowspan ="합쳐질 행 수"
+		가장 위쪽만 살아 남아서 합치기를 한다
+-->
+
+ <h2>열 합치기 (colspan)</h2>
+ <p> 컬럼과 컬럼을 합칠때 사용한다. </p>
+ 
+ <table width="30%">
+	<thead>
+		<tr>
+			<th>방이름</th>
+			<th>대상</th>
+			<th colspan="2">크기/가격</th>
+			<!-- <th>가격</th> -->
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>유채방</td>
+			<td>여성</td>
+			<td>4인실</td>
+			<td>1인 60,000원</td>
+		</tr>
+		<tr>
+			<td>동백방</td>
+			<td>동성</td>
+			<td>4인실</td>
+			<td>1인 60,000원</td>
+		</tr>
+		<tr>
+			<td>동백방</td>
+			<td>가족</td>
+			<td>4인실</td>
+			<td>1인 60,000원</td>
+		</tr>
+		<tr>
+			<td>천혜향방</td>
+			<td>누구나</td>
+			<td>2인실</td>
+			<td>1인 60,000원</td>
+		</tr>
+	</tbody>
+	
+	<tfoot>
+		<tr>
+			<td colspan="4">**3세까지 무료 </td>
+		</tr>
+	</tfoot>
+ </table> 
+ 
+ 
+ <hr>
+ <h2>로우 합치기 (rowspan)</h2>
+ <p>행과 행을 합칠 때 사용된다</p>
+<table width="30%">
+	<thead>
+		<tr>
+			<th>방이름</th>
+			<th>대상</th>
+			<th>크기</th>
+			<th>가격</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>유채방</td>
+			<td>여성</td>
+			<td rowspan="3	">4인실</td>
+			<td rowspan="4">1인 60,000원</td>
+		</tr>
+		<tr>
+			<td rowspan="2">동백방</td>
+			<td>동성</td>
+			
+		</tr>
+		<tr>
+			
+			<td>가족</td>
+			
+		</tr>
+		<tr>
+			<td>천혜향방</td>
+			<td>누구나</td>
+			<td>2인실</td>
+		</tr>
+	</tbody>
+	
+	<tfoot>
+		<tr>
+			<td>**3세까지 무료 </td>
+			<td>**3세까지 무료 </td>
+			<td>**3세까지 무료 </td>
+			<td>**3세까지 무료 </td>
+		</tr>
+	</tfoot>
+ </table> 
+
+</body>
+</html>

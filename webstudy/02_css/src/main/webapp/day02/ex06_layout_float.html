@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+    document.getElementById("navbar").style.top = "0";
+    document.getElementById("navbar").style.position = "fixed";
+  } else if (document.body.scrollTop = 0 ) {
+    
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+    document.getElementById("navbar").style.position = "static";
+  }
+}
+    </script>
+    <style>
+        *{  
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #headerTitle {
+            margin : 1em auto;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+        }
+        #navbar {
+            background-color: lightgray;
+            position: static;
+            top:-50px;
+            width:100%;
+            transition: top 0.9s;;
+        }
+        #navbar li{
+            float:left;
+        }
+        #navbar li a{
+            display:block;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            padding-left: 2rem;
+            text-decoration: none;
+        }
+        #navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #container{
+            line-break: anywhere;
+        }
+        #sidebar{
+            width:20%;
+            float:right;
+        }
+        #contents {
+            width:80%;
+            float:left;
+            margin:0 auto;
+            margin-bottom: 1rem;
+        }
+        #contents h1 {
+            margin : 1.5rem;
+        }
+        #contents p {
+            margin-left: 1em;
+            width:80%;
+            
+        }
+        #footer{
+            clear:both;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <header id="header">
+        <p id="headerTitle">한국 ict 인재 개발원 소식</p>
+        <nav id="navbar">
+            <ul>
+                <li>
+                    <a href="">HOME</a>
+                </li>
+                <li>
+                    <a href="">News</a>
+                </li>
+                <li>
+                    <a href="">Content</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+            </ul>
+          
+        
+        </nav>
+    </header>
+
+    <div id="container">
+        <aside id="sidebar">
+            <h1>aside</h1>
+            <p>You can use the overflow property</p>
+        </aside>
+        <article id="contents">
+            <h1>Article 1</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            </p>
+            <h1>Article 2</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            </p>
+            <h1>Article 3</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD</p>
+            <h1>Article 1</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD</p>
+            <h1>Article 2</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDS
+                    ASDFFADSFDSASFDFDSFDSAFSDSFADSFDFADSFD
+                    ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                    ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                    ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                    ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+                    ASDFFADSFDSASFDFDSFDSAFSDSFADSFD</p>
+            <h1>Article 3</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD</p>
+            <h1>Article 1</h1>
+            <p>ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD
+            ASDFFADSFDSASFDFDSFDSAFSDSFADSFD</p>
+      
+        </article>
+    </div>
+    <footer id="footer">footer</footer>
+
+</body>
+</html>
